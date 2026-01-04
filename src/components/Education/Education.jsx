@@ -1,27 +1,40 @@
 import React from "react";
-import { education } from "../../constants"; // Import the education data
+import { education } from "../../constants";
 
 const Education = () => {
   return (
     <section
       id="education"
-      className="py-24 pb-24 px-[12vw] md:px-[7vw] lg:px-[16vw] font-sans bg-skills-gradient clip-path-custom-3"
+      className="py-24 pb-24 px-[12vw] md:px-[7vw] lg:px-[16vw] 
+                 font-sans bg-skills-gradient clip-path-custom-3"
     >
       {/* Section Title */}
       <div className="text-center mb-16">
         <h2 className="text-4xl font-bold text-white">EDUCATION</h2>
-        <div className="w-32 h-1 bg-purple-500 mx-auto mt-4"></div>
+        <div
+          className="w-32 h-1 bg-[#00ffff] mx-auto mt-4
+                     shadow-[0_0_15px_rgba(0,255,255,0.8)]"
+        ></div>
         <p className="text-gray-400 mt-4 text-lg font-semibold">
-          My education has been a journey of learning and development. Here are the details of my academic background
+          My education has been a journey of learning and development.
+          Here are the details of my academic background.
         </p>
       </div>
 
       {/* Education Timeline */}
       <div className="relative">
-        {/* Vertical line */}
-        <div className="absolute sm:left-1/2 left-0 transform -translate-x-1/2 sm:-translate-x-0 w-1 bg-white h-full"></div>
+        {/* Vertical Line */}
+       {/* Vertical Line */}
+<div
+  className="absolute top-0 bottom-0 left-0 sm:left-1/2
+             transform sm:-translate-x-1/2
+             w-[3px] bg-gradient-to-b
+             from-transparent via-[#00ffff] to-transparent
+             shadow-[0_0_20px_rgba(0,255,255,0.8)]"
+></div>
 
-        {/* Education Entries */}
+
+        {/* Education Cards */}
         {education.map((edu, index) => (
           <div
             key={edu.id}
@@ -29,49 +42,50 @@ const Education = () => {
               index % 2 === 0 ? "sm:justify-start" : "sm:justify-end"
             }`}
           >
-            {/* Timeline Circle */}
-            <div className="absolute sm:left-1/2 left-0 transform -translate-x-1/2 bg-gray-400 border-4 border-[#8245ec] w-12 h-12 sm:w-16 sm:h-16 rounded-full flex justify-center items-center z-10">
-              <img
-                src={edu.img}
-                alt={edu.school}
-                className="w-full h-full object-cover rounded-full"
-              />
-            </div>
-
-            {/* Content Section */}
             <div
-              className={`w-full sm:max-w-md p-4 sm:p-8 rounded-2xl shadow-2xl border border-white bg-gray-900 backdrop-blur-md shadow-[0_0_20px_1px_rgba(130,69,236,0.3)] ${
-                index % 2 === 0 ? "sm:ml-0" : "sm:mr-0"
-              } sm:ml-44 sm:mr-44 ml-8 transform transition-transform duration-300 hover:scale-105`}
+              className={`w-full sm:max-w-md p-4 sm:p-8 rounded-2xl
+                          bg-gray-900/80 backdrop-blur-md
+                          border border-cyan-400/30
+                          shadow-[0_0_25px_rgba(0,255,255,0.3)]
+                          hover:shadow-[0_0_40px_rgba(0,255,255,0.55)]
+                          transform transition-all duration-300 hover:scale-105
+                          ${index % 2 === 0 ? "sm:ml-44" : "sm:mr-44"} ml-8`}
             >
-              {/* Flex container for image and text */}
+              {/* Header */}
               <div className="flex items-center space-x-6">
-                {/* School Logo/Image */}
-                <div className="w-24 h-16 bg-white rounded-md overflow-hidden">
+                {/* Logo */}
+                <div
+                  className="w-24 h-16 bg-white rounded-md overflow-hidden
+                             flex items-center justify-center
+                             shadow-[0_0_10px_rgba(0,255,255,0.4)]"
+                >
                   <img
                     src={edu.img}
                     alt={edu.school}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                 </div>
 
-                {/* Degree, School Name, and Date */}
-                <div className="flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-xl sm:text-xl font-semibold text-white">
-                      {edu.degree}
-                    </h3>
-                    <h4 className="text-md sm:text-sm text-gray-300">
-                      {edu.school}
-                    </h4>
-                  </div>
-                  {/* Date at the bottom */}
-                  <p className="text-sm text-gray-500 mt-2">{edu.date}</p>
+                {/* Text */}
+                <div className="flex flex-col">
+                  <h3 className="text-xl font-semibold text-white">
+                    {edu.degree}
+                  </h3>
+                  <h4 className="text-sm text-gray-300">
+                    {edu.school}
+                  </h4>
+                  <p className="text-sm text-gray-500 mt-1">
+                    {edu.date}
+                  </p>
                 </div>
               </div>
 
-              <p className="mt-4 text-gray-400 font-bold">Grade: {edu.grade}</p>
-              <p className="mt-4 text-gray-400">{edu.desc}</p>
+              <p className="mt-4 text-[#00ffff] font-bold">
+                Grade: {edu.grade}
+              </p>
+              <p className="mt-4 text-gray-400">
+                {edu.desc}
+              </p>
             </div>
           </div>
         ))}

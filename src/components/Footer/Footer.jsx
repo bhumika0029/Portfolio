@@ -1,65 +1,87 @@
 import React from "react";
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
-  // Smooth scroll function
-  const handleScroll = (sectionId) => {
-    const section = document.getElementById(sectionId);
-    if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
-    }
+  const handleScroll = (id) => {
+    const section = document.getElementById(id);
+    if (section) section.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <footer className="text-white py-8 px-[12vw] md:px-[7vw] lg:px-[20vw]">
-      <div className="container mx-auto text-center">
-        {/* Name / Logo */}
-        <h2 className="text-xl font-semibold text-purple-500">Tarun Kaushik</h2>
+    <footer className="relative bg-[#050414] text-white
+                       px-[12vw] md:px-[7vw] lg:px-[20vw] py-12
+                       border-t border-cyan-400/30">
 
-        {/* Navigation Links - Responsive */}
-        <nav className="flex flex-wrap justify-center space-x-4 sm:space-x-6 mt-4">
+      {/* Top Glow Line */}
+      <div className="absolute top-0 left-0 w-full h-[2px]
+                      bg-gradient-to-r from-transparent via-[#00ffff] to-transparent
+                      shadow-[0_0_15px_rgba(0,255,255,0.8)]" />
+
+      <div className="flex flex-col items-center text-center gap-6">
+
+        {/* Name / Logo */}
+        <h2 className="text-2xl font-bold text-[#00ffff]
+                       drop-shadow-[0_0_12px_rgba(0,255,255,0.9)]">
+          Bhumika Godbole
+        </h2>
+
+        {/* Navigation */}
+        <nav className="flex flex-wrap justify-center gap-6 text-gray-400">
           {[
             { name: "About", id: "about" },
             { name: "Skills", id: "skills" },
-            { name: "Experience", id: "experience" },
-            { name: "Projects", id: "projects" },
+            { name: "Projects", id: "work" },
             { name: "Education", id: "education" },
-          ].map((item, index) => (
+            { name: "Contact", id: "contact" },
+          ].map((item) => (
             <button
-              key={index}
+              key={item.id}
               onClick={() => handleScroll(item.id)}
-              className="hover:text-purple-500 text-sm sm:text-base my-1"
+              className="relative hover:text-[#00ffff] transition"
             >
               {item.name}
+              <span
+                className="absolute left-0 -bottom-1 w-0 h-[2px]
+                           bg-[#00ffff] transition-all duration-300
+                           hover:w-full"
+              />
             </button>
           ))}
         </nav>
 
-        {/* Social Media Icons - Responsive */}
-        <div className="flex flex-wrap justify-center space-x-4 mt-6">
-          {[
-            { icon: <FaFacebook />, link: "https://www.facebook.com/tarun.kaushik.3511041/" },
-            { icon: <FaTwitter />, link: "https://twitter.com/CodingMaster6?s=09" },
-            { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/tarun-kaushik-553b441a4" },
-            { icon: <FaInstagram />, link: "https://www.instagram.com/coding_.master/" },
-            { icon: <FaYoutube />, link: "https://www.youtube.com/codingmasteryt" },
-            
-          ].map((item, index) => (
-            <a
-              key={index}
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xl hover:text-purple-500 transition-transform transform hover:scale-110"
-            >
-              {item.icon}
-            </a>
-          ))}
+        {/* Social Icons */}
+        <div className="flex gap-6">
+          <a
+            href="https://github.com/bhumika0029"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-2xl text-gray-400
+                       hover:text-[#00ffff]
+                       transition transform hover:scale-110
+                       drop-shadow-[0_0_10px_rgba(0,255,255,0.8)]"
+          >
+            <FaGithub />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/bhumika-godbole-9a6a93270"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-2xl text-gray-400
+                       hover:text-[#00ffff]
+                       transition transform hover:scale-110
+                       drop-shadow-[0_0_10px_rgba(0,255,255,0.8)]"
+          >
+            <FaLinkedin />
+          </a>
         </div>
 
-        {/* Copyright Text */}
-        <p className="text-sm text-gray-400 mt-6">
-          © 2025 Tarun Kaushik. All rights reserved.
+        {/* Divider */}
+        <div className="w-32 h-[1px] bg-cyan-400/30" />
+
+        {/* Copyright */}
+        <p className="text-sm text-gray-500">
+          © 2025 <span className="text-[#00ffff]">Bhumika Godbole</span>. All rights reserved.
         </p>
       </div>
     </footer>
